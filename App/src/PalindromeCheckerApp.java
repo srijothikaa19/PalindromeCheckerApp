@@ -3,13 +3,22 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
         String text = "madam";
-        String reversed = "";
+        char[] chars = text.toCharArray();
 
-        for (int i = text.length() - 1; i >= 0; i--) {
-            reversed += text.charAt(i);
+        int start = 0;
+        int end = chars.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        if (text.equalsIgnoreCase(reversed)) {
+        if (isPalindrome) {
             System.out.println(text + " is a Palindrome.");
         } else {
             System.out.println(text + " is NOT a Palindrome.");
