@@ -6,16 +6,22 @@ public class PalindromeCheckerApp {
 
         String text = "madam";
 
-        // Inject strategy
         PalindromeStrategy strategy = new StackStrategy();
 
+        long startTime = System.nanoTime();
+
         boolean result = strategy.check(text);
+
+        long endTime = System.nanoTime();
+        long duration = endTime - startTime;
 
         if (result) {
             System.out.println(text + " is a Palindrome.");
         } else {
             System.out.println(text + " is NOT a Palindrome.");
         }
+
+        System.out.println("Execution Time: " + duration + " nanoseconds");
     }
 }
 
@@ -24,7 +30,7 @@ interface PalindromeStrategy {
     boolean check(String input);
 }
 
-// Concrete Strategy using Stack
+// Stack-based palindrome algorithm
 class StackStrategy implements PalindromeStrategy {
 
     public boolean check(String input) {
